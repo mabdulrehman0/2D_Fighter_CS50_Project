@@ -1,12 +1,12 @@
 # 🥊 2D Fighter – CS50 Final Project
 
 ## 🎮 Project Overview
-This is a 2D local multiplayer fighting game developed in **Unity** using **C#**, built over 17 days for my CS50 final project. It’s inspired by classic arcade fighters, with a simple design and solid mechanics. Along the way, I learned Unity basics, player movement systems, game logic, UI systems, and how to manage builds and debugging.
+This is a 2D local multiplayer fighting game developed in **Unity** using **C#**, built over 17 days for my CS50 final project. It’s inspired by classic arcade fighters, with a simple design and solid mechanics. Along the way, I learned Unity basics with Unity Essentials, player movement systems, game logic, UI systems, and how to manage builds and debugging.
 
 ---
 
 ## ⚙️ Features
-- Two-player local combat with smooth movement and hit detection
+- Two-player local combat with movement and hit detection
 - Light/heavy attack logic per character
 - Health bars that update in real time
 - Win detection + win screen
@@ -19,12 +19,12 @@ This is a 2D local multiplayer fighting game developed in **Unity** using **C#**
 ## 🎮 Controls
 
 ### Player 1:
-- Movement: `W`, `A`, `S`, `D`
-- Attacks: `F` (light), `G` (heavy)
-
-### Player 2:
 - Movement: Arrow keys
 - Attacks: `K` (light), `L` (heavy)
+
+### Player 2:
+- Movement: `W`, `A`, `S`, `D`
+- Attacks: `F` (light), `G` (heavy)
 
 > Keybinds can be changed via the options menu.
 
@@ -33,14 +33,15 @@ This is a 2D local multiplayer fighting game developed in **Unity** using **C#**
 ## 🖥️ How to Run the Game
 
 ### 💻 Download & Play (Pre-built version)
-Coming soon...
+-You can download the Windows or Linux version from the repo (Only tested on Manjaro linux kernal 6.12)
 
 ### 🛠️ Run from Unity (Source code)
 1. Clone the project from GitHub  
    👉 [Project Repo](https://github.com/mabdulrehman0/2D_Fighter_CS50_Project)
-2. Open in Unity Hub
-3. Let Unity regenerate project files
-4. Run the game from the main menu scene
+   Only download the folder called 2D fighter.
+3. Open in Unity Hub
+4. Let Unity regenerate project files
+5. Run the game from the main menu scene
 
 ---
 
@@ -52,10 +53,10 @@ Will be uploaded to my YouTube channel: [Obscura](https://youtube.com/@Obscura-O
 
 ## 🧑‍💻 What I Learned
 - Unity’s scene system, player input, and game loop
+- C# programming with classes and objects
 - Creating responsive UI with transitions
 - Using UnityEvents and serialization
 - Managing assets, animation states, and hitboxes
-- Basic Git/GitHub workflows and version control
 - Solving platform issues (like build audio bugs & Manjaro driver nukes 😅)
 
 ---
@@ -63,10 +64,9 @@ Will be uploaded to my YouTube channel: [Obscura](https://youtube.com/@Obscura-O
 ## 🧾 Code Notes
 All code was written by me unless otherwise stated.  
 Some movement/input logic was inspired by:
-- Brackeys tutorials
-- Unity Forum threads
-- StackOverflow solutions for minor bugs
-
+- Brackeys tutorials (Most of the concept was learned from there, no code was copied though)
+- Unity Forum threads (same as above)
+- Chatgpt
 Any such parts are commented clearly in the scripts.
 
 ---
