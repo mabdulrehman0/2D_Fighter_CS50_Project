@@ -4,11 +4,14 @@ using UnityEngine.Audio;
 
 public class Audio : MonoBehaviour
 {
+    // singleton pattern to make it accesible for other scripts.
     public static Audio instance;
-
+    // To plug in the audio source component in audio game object.
     public AudioSource audioSource;
+    // This make it so i can refernce the audio clips
     public AudioClip attack, light_attack, on_hover, on_clicked, win_sound, get_hit;
 
+    // This makes it so that it keeps running in other scenes aswell
     private void Awake()
     {
         if (instance == null)
@@ -20,6 +23,7 @@ public class Audio : MonoBehaviour
         
     }
 
+    // the functions are to play audio clips when called on button or in scripts of other objects
     public void PlayAttack()
     {
         audioSource.PlayOneShot(attack);

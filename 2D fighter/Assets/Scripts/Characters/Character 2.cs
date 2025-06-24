@@ -10,76 +10,76 @@ using Unity.VisualScripting;
 
 public class Character2 : MonoBehaviour
 {
-    // varibles duh ^_^
+    // below the are the varibles which are being used for multiple reasons
+
+    // To set the speed of the characters.
     public float speed = 1f;
 
+    // Referencing the enemy character for attack hit and damage hit box
     public Character1 enemy;
 
-    public KeyCode move_left_2;
+    // Varibles that have the keybinds of default keys and if modified thent these are the modified keys
+    public KeyCode move_left_2, move_right_2, light_attack2, Attack2;
 
-    public KeyCode move_right_2;
-
-    public KeyCode light_attack2;
-
-    public KeyCode Attack2;
-
+    // For health system.
     public int maxhealth = 100;
-
     public int currenthealth;
-
     public Health_bar2 health_Bar;
 
+    // for movement and hitbox colliders.
     public Rigidbody2D rb;
-
     public BoxCollider2D hitbox;
+    public EdgeCollider2D attackhitbox, smallattackhitbox;
 
-    public EdgeCollider2D attackhitbox;
-
-    public EdgeCollider2D smallattackhitbox;
-    
+    // To make animation be controllable through the scripts.
     public Animator animator;
 
+    // using and modifieing values of SpriteRenderer component for flipping of characters when moving in different directions.
     public SpriteRenderer spriteRenderer;
-
-    public float movement = 0f;
-
+    // a variable for checking death.
     private bool dead = false;
 
+    // basically importing the winui Controls when a player wins and loses.
     public WinUI winUI;
 
+    // for setting the horizontall movement.
+    public float movement = 0f;
 
-    //attack animation section
+    // enabling the attack hitbox for colliding theattackhitbox and the hitbox of the other character
     public void enable_attack_hitbox()
     {
         attackhitbox.enabled = true;
         Audio.instance.PlayAttack();
-        Debug.Log("sound worked, attack");
     }
 
-    public void disable_attack_hitbox ()
+    // disabling the above attack hitbox
+    public void disable_attack_hitbox()
     {
         attackhitbox.enabled = false;
     }
 
+    // same the as the attack box but slightly different hot box size for a completely different attack
     public void enable_quick_attack()
     {
         smallattackhitbox.enabled = true;
         Audio.instance.PlayLightAttack();
-        Debug.Log("sound worked, light attack");
     }
+    // disabling the above attackhitbox
     public void disable_quick_attack()
     {
         smallattackhitbox.enabled = false;
     }
 
-    // setting the health
+    // Start of the game
     private void Start()
     {
+        // importing the keybinds from Player Prefs
         move_left_2 = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Moveleft2", "A"));
         move_right_2 = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Moveright2", "D"));
         light_attack2 = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Light_attack_2", "F"));
         Attack2 = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Attack2", "G"));
 
+        // setting the correct health.
         currenthealth = maxhealth;
         health_Bar.setmaxhealth(maxhealth);
     }
@@ -87,8 +87,8 @@ public class Character2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        // basically needed for movement and keybinds for movements
+        /*  setting the movement to 0 every frame and then check if key is held down the movement will go to 1 or -1 depending
+       on the key which is pressed */
         movement = 0f;
 
         if (Input.GetKey(move_right_2))
@@ -101,7 +101,7 @@ public class Character2 : MonoBehaviour
         }
 
 
-        // key binds for attacking (not flexible)
+        // setting off the animation triggers according to keys pressed for attacks
         if (Input.GetKeyDown(light_attack2))
         {
             animator.SetTrigger("attack1");
@@ -111,7 +111,7 @@ public class Character2 : MonoBehaviour
             animator.SetTrigger("attack2");
         }
 
-        // death check
+        // checking if the players is dead or not and if yes then enabling the win logic
         if (!dead && currenthealth <= 0)
         {
             Debug.Log("player dead");
@@ -119,12 +119,12 @@ public class Character2 : MonoBehaviour
             animator.SetTrigger("death");
             winUI.winplayer(1);
             Audio.instance.Play_win();
-            Debug.Log("sound worked, win");
         }
 
-        // the sprite direction changer (mint)
+        // setting the bool condition for idle animation
         animator.SetFloat("speed", Mathf.Abs(movement));
 
+        // the sprite direction changer 
         if (movement == 1)
         {
             spriteRenderer.flipX = false;
@@ -139,6 +139,7 @@ public class Character2 : MonoBehaviour
     // basically the movement system
     void FixedUpdate()
     {
+        // this how the players moves the characters. Helped by chatgpt by figuring out which method to use as i did not know
         rb.linearVelocity = new Vector2(movement * speed, rb.linearVelocity.y);
     }
 
@@ -158,7 +159,8 @@ public class Character2 : MonoBehaviour
         }
     }
 
-
+    // Checking if colliders have collided and doing damage accordingly
+    // the compare tag was known by source of chatgpt
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (attackhitbox.enabled && other.CompareTag("Player1"))
