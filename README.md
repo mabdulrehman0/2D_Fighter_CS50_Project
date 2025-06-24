@@ -34,6 +34,8 @@ This is a 2D local multiplayer fighting game developed in **Unity** using **C#**
 
 ### 💻 Download & Play (Pre-built version)
 - You can download the Windows or Linux version from the repo (Only tested on Manjaro linux kernal 6.12)
+- ⚠️ **Important:** Make sure to read `BUILD_README.md` before trying the Linux build.
+
 
 ### 🛠️ Run from Unity (Source code)
 1. Clone the project from GitHub  
