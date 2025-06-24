@@ -33,13 +33,13 @@ This is a 2D local multiplayer fighting game developed in **Unity** using **C#**
 ## 🖥️ How to Run the Game
 
 ### 💻 Download & Play (Pre-built version)
--You can download the Windows or Linux version from the repo (Only tested on Manjaro linux kernal 6.12)
+- You can download the Windows or Linux version from the repo (Only tested on Manjaro linux kernal 6.12)
 
 ### 🛠️ Run from Unity (Source code)
 1. Clone the project from GitHub  
    👉 [Project Repo](https://github.com/mabdulrehman0/2D_Fighter_CS50_Project)
-   Only download the folder called 2D fighter.
-3. Open in Unity Hub
+2. Download or clone the repo
+3. Inside the project, open the `2D Fighter` folder with Unity Hub
 4. Let Unity regenerate project files
 5. Run the game from the main menu scene
 
